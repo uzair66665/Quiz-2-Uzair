@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Format A Number</h1>
+        <br><br><br>
+        <b>Enter Number</b><br>
+        <input id="num" type="number" ><br><br>
+        <b>Enter Decimal Places</b><br>
+        <input id="dec" type="number" >
+        <br><br>
+        <button onclick="decimal()">Decimal</button>
+        <br><br>
+        <h3 id="ans"></h3>
+    </center>
+    <script>
+        var num,dec;
+        decimal=()=>{
+            let chk=0;
+            num=document.getElementById("num").value;
+            dec=document.getElementById("dec").value;
+            for(var i=0;i<num.length;i++)
+            {
+                if(num[i]=='.')
+                {
+                    chk=1;
+                }
+            }
+            if(chk==1)
+            {
+                let ans="",c=0,i;
+                for(i=0;i<num.length;i++)
+                {
+                    if(num[i]=='.')
+                    {
+                        break;
+                    }
+                }
+                i++;
+                if(num.length-i==dec)
+                {
+                    document.getElementById("ans").innerHTML=num;
+                }
+                else
+                {
+                    for(var j=0;j<i;j++)
+                    {
+                        ans+=num[j];
+                    }
+                    if(dec<num.length-i)
+                    {
+                        for(var j=0;j<dec;j++)
+                        {
+                            ans+=num[i];
+                        }
+                    }
+                    else
+                    {
+                        ans="";
+                        ans+=num;
+                        dec=+dec+ +i;
+                        for(var j=num.length-1;j<dec-1;j++)
+                        {
+                            ans+=0;
+                        }
+                    }
+                    document.getElementById("ans").innerHTML=ans;
+                }
+
+            }
+            else
+            {
+                let ans=num;
+                ans+='.';
+                for(var i=0;i<dec;i++)
+                {
+                    ans+=0;
+                }
+                document.getElementById("ans").innerHTML=ans;
+            }
+        }
+    </script>
+</body>
+</html>

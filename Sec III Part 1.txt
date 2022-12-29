@@ -1,0 +1,10 @@
+Regular vs Arrow function
+
+Regular :
+    Function starts with "funtion" syntax.
+    Old style 
+
+Arrow:
+    Don't need to start with "function" syntax
+    Launched in ES6 version
+    Easy to read

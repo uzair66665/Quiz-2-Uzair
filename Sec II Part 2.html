@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Palindrome Check</h1>
+        <br><br><br>
+        <b>Enter A String</b><br>
+        <input id="s1" type="text" ><br><br>
+        <br><br>
+        <button onclick="check()">Check</button>
+        <br><br>
+        <h3 id="ans"></h3>
+    </center>
+    <script>
+        function check()
+        {
+            var s1=document.getElementById("s1").value;
+            var len=s1.length,chk=1,j=len-1;
+            for(var i=0;i<len/2;i++)
+            {
+                if(s1[i]!=s1[j])
+                {
+                    chk=0;
+                    break;
+                }
+                j--;
+            }
+            if(chk)
+            {
+                document.getElementById("ans").innerHTML="It's a Palindrome";
+            }
+            else
+            {
+                document.getElementById("ans").innerHTML="It's not a Palindrome";
+            }
+        }
+    </script>
+</body>
+</html>

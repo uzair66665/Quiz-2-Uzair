@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Matrix Multiplier</h1>
+        <table>
+            <tr>
+                <th colspan="2">
+                    <center>Matrix A</center>
+                    <br>
+                </th>
+            </tr>
+            <tr>
+                <th><label>Enter Rows</label></th>
+                <td><input id="m1r" type="text"></td>
+            </tr>
+            <tr>
+                <th><label>Enter Columns</label></th>
+                <td><input id="m1c" type="text"></td><br>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <center>Matrix B</center>
+                </th>
+            </tr>
+            <tr>
+                <th><label>Enter Rows</label></th>
+                <td><input id="m2r" type="text"></td>
+            </tr>
+            <tr>
+                <th><label>Enter Columns</label></th>
+                <td><input id="m2c" type="text"></td><br>
+            </tr>
+        </table>
+        <br>
+        <button onclick="multiply()">
+            Multiply
+        </button>
+        <br><br>
+        <b id="ans"></b>
+    </center>
+
+    <script>
+        var m1row,m1col,m2row,m2col;
+        multiply=()=>{
+            m1row=document.getElementById("m1r").value;
+            m1col=document.getElementById("m1c").value;
+            m2row=document.getElementById("m2r").value;
+            m2col=document.getElementById("m2c").value;
+            if(m1col==m2row)
+            {
+                
+                var arr1=new Array(m1row);
+                for(var i=0;i<m1row;i++)
+                {
+                    arr1[i]=new Array(m1col);
+                }
+                for (var i = 0; i < m1row; i++) 
+                {
+                    for (var j = 0; j < m1col; j++) {
+                        arr1[i][j]=prompt("Please Enter Matrix A Row "+(+i+1)+" Column "+(+j+1)+" Value");
+                    }
+                }
+                
+                
+                var arr2=new Array(m2row);
+                for(var i=0;i<m2row;i++)
+                {
+                    arr2[i]=new Array(m2col);
+                }
+                for (var i = 0; i < m2row; i++) 
+                {
+                    for (var j = 0; j < m2col; j++) {
+                        arr2[i][j]=prompt("Please Enter Matrix B Row "+(+i+1)+" Column "+(+j+1)+" Value");
+                    }
+                }
+
+                
+                var arr3=new Array(m1row);
+                for(var i=0;i<m1row;i++)
+                {
+                    arr3[i]=new Array(m2row);
+                }
+                var sum;
+                for(var i=0;i<m1row;i++)
+                {
+                    for(var j=0;j<m2col;j++)
+                    {
+                        sum=0;
+                        for(var k=0;k<m1col;k++)
+                        {
+                            sum=sum+ arr1[i][k]*arr2[k][j];
+                        }
+                        arr3[i][j]=sum;
+                    }
+                }
+                
+                document.getElementById("ans").innerHTML+="<h3>Result</h3>";
+                for (var i = 0; i < m1row; i++) {
+                    for (var j = 0; j < m2col; j++) {
+                        document.getElementById("ans").innerHTML+=(arr3[i][j] + "  ");
+                    }
+                    document.getElementById("ans").innerHTML+="<br>";
+                }
+
+            }
+            else
+            {
+                document.getElementById("ans").innerHTML="Matrix multiplication rule not followed<br>Please check the value";
+            }
+        }
+    </script>
+</body>
+</html>

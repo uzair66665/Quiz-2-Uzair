@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Age Calculator</h1>
+        <br><br><br>
+        <b>Select Your Date of Birth</b><br><br>
+        <input id="num" type="date" >
+        <br><br>
+        <button onclick="calc()">Calculate</button>
+        <br><br>
+        <h3 id="age"></h3>
+    </center>
+    <script>
+        var num,year,month,day;
+        const date = new Date();
+        let currentyear = date.getFullYear(),currentmonth = date.getMonth() + 1,currentday = date.getDate();
+        var fyear=0,fmonth=0,fday=0;
+        const calc=()=>{
+            num=document.getElementById("num").value;
+            year="",month="",day="";
+            for(var i=0;i<num.length;i++)
+            {
+                if(i<4)
+                {
+                    year+=num[i];
+                }
+                else if(i>4 && i<7)
+                {
+                    month+=num[i];
+                }
+                else if(i>7)
+                {
+                    day+=num[i];
+                }
+            }
+            //Years
+            if(year>currentyear || (year==currentyear && month>currentmonth) || (year==currentyear && month==currentmonth && day>currentday))
+            {
+                document.getElementById("age").innerHTML="Select valid Date";
+            }
+            else
+            {
+                year=currentyear-year-1;
+                if(month>=currentmonth)
+                {
+                    month=(12-month)+(currentmonth);
+                }
+                else
+                {
+                    month=currentmonth-month;
+                }
+                if(day>currentday)
+                {
+                    day=(30-day);
+                }
+                else
+                {
+                    day=currentday-day;
+                }
+                if(day==30 && month==12)
+                {
+                    year++;
+                    month=0;
+                    day=0;
+                }
+                else if(day==30)
+                {
+                    month++;
+                    day=0;
+                }
+                else if(month==12)
+                {
+                    year++;
+                    month=0;
+                }
+                
+                document.getElementById("age").innerHTML="Your Age is "+day+" Days "+month+" Months & "+year+" Years";
+                
+            }
+        }
+    </script>
+</body>
+</html>

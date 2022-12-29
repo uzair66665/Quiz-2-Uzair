@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Sum of Odd Numbers</h1>
+        <br><br><br>
+        <b>Enter a Number Greater Than 5 Digits</b><br><br>
+        <input id="num" type="number" >
+        <br><br>
+        <button onclick="sum()">SUM</button>
+        <br><br>
+        <h3 id="ans"></h3>
+    </center>
+
+    <script>
+        var num,ans=0;
+        const sum=()=>{
+            num=document.getElementById("num").value;
+            if(num.length>5)
+            {
+                for(var i=0;i<num.length;i++)
+                {
+                    if(num[i]%2==1)
+                    {
+                        ans+=+num[i];
+                    }    
+                }
+                document.getElementById("ans").innerHTML="Sum of Odd Numbers : "+ans;
+            }
+            else
+            {
+                document.getElementById("ans").innerHTML="Please Enter a Number Greater Than 5 Digits";
+            }
+        }
+    </script>
+</body>
+</html>
